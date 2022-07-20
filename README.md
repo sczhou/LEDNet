@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/LEDNet_LOLBlur_logo.png" height=100>
+  <img src="assets/LEDNet_LOLBlur_logo.png" height=90>
 </p>
 
 ## LEDNet: Joint Low-light Enhancement and Deblurring in the Dark (ECCV2022)
