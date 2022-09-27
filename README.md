@@ -75,7 +75,7 @@ python basicsr/setup.py develop
 ### Train the Model
 Before training, you need to:
 
-- Download the LOL-Blur Dataset from [[Google Drive](https://github.com/sczhou/LEDNet/releases/tag/v0.1.0)].
+- Download the LOL-Blur Dataset from [[Google Drive](https://drive.google.com/drive/folders/11HcsiHNvM7JUlbuHIniREdQ2peDUhtwX?usp=sharing)].
 - Specify `dataroot_gt` and `dataroot_lq` in the corresponding option file.
 
 Training LEDNet:
@@ -89,7 +89,7 @@ python basicsr/train.py -opt options/train_LEDNetGAN.yml
 This project is built on [BasicSR](https://github.com/XPixelGroup/BasicSR), the detailed tutorial on training commands and config settings can be found [here](https://github.com/XPixelGroup/BasicSR/blob/master/docs/introduction.md).
 
 ### Quick Inference
-- Download the LEDNet pretrained model from [[Release V0.1.0](https://drive.google.com/drive/folders/)] to the `weights` folder. You can manually download the pretrained models OR download by runing the following command.
+- Download the LEDNet pretrained model from [[Release V0.1.0](https://github.com/sczhou/LEDNet/releases/tag/v0.1.0)] to the `weights` folder. You can manually download the pretrained models OR download by runing the following command.
   
   > python scripts/download_pretrained_models.py LEDNet
   
