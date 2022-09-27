@@ -1,0 +1,131 @@
+# general settings
+name: LEDNet
+model_type: LEDNetModel
+num_gpu: 4
+manual_seed: 10
+
+# dataset and data loader settings
+datasets:
+  train:
+    name: LOLBlurDataset_Train
+    type: PairedImageDataset
+    dataroot_gt: /mnt/lustre/sczhou/datasets/deblurring/LOLBlur/train/high_sharp_scaled
+    dataroot_lq: /mnt/lustre/sczhou/datasets/deblurring/LOLBlur/train/low_blur_noise
+    filename_tmpl: '{}'
+    io_backend:
+      type: disk
+
+    mean: [0.5, 0.5, 0.5]
+    std: [0.5, 0.5, 0.5]
+    use_flip: true
+    use_rot: true
+    crop_size: 256
+
+    use_shuffle: true
+    batch_size_per_gpu: &bsz 4
+    num_worker_per_gpu: 2
+    dataset_enlarge_ratio: 100
+    prefetch_mode: ~
+
+    prefetch_mode: cpu
+    num_prefetch_queue: 4
+
+  val:
+    name: LOLBlurDataset_Test
+    type: PairedImageDataset
+    dataroot_gt: /mnt/lustre/sczhou/datasets/deblurring/LOLBlur/test/high_sharp_scaled
+    dataroot_lq: /mnt/lustre/sczhou/datasets/deblurring/LOLBlur/test/low_blur_noise
+    io_backend:
+      type: disk
+
+    mean: [0.5, 0.5, 0.5]
+    std: [0.5, 0.5, 0.5]
+
+# network structures
+network_g:
+  type: LEDNet
+  channels: [32, 64, 128, 128]
+  connection: false
+
+# path
+path:
+  pretrain_network_g: ~
+  strict_load_g: true
+  resume_state: ~
+
+# training settings
+train:
+  optim_g:
+    type: Adam
+    lr: !!float 1e-4
+    weight_decay: 0
+    betas: [0.9, 0.99]
+
+  # scheduler:
+  #   type: MultiStepLR
+  #   milestones: [200000, 300000, 400000, 450000]
+  #   gamma: 0.5
+
+  scheduler:
+    type: CosineAnnealingRestartLR
+    periods: [500000]
+    restart_weights: [1]
+    eta_min: !!float 1e-7
+
+  total_iter: 500000
+  warmup_iter: -1  # no warm up
+
+  # losses
+  pixel_opt:
+    type: L1Loss
+    loss_weight: 1.0
+    reduction: mean
+
+  perceptual_opt:
+    type: PerceptualLoss
+    layer_weights:
+      # before relu
+      'conv1_2': 1
+      'conv2_2': 1
+      'conv3_4': 1
+      'conv4_4': 1
+    vgg_type: vgg19
+    use_input_norm: true
+    perceptual_weight: 0.01
+    style_weight: 0
+    range_norm: true
+    criterion: l1
+  
+  use_side_loss: true
+  side_loss_weight: 0.8
+  init_weights: false
+
+
+# validation settings
+val:
+  val_freq: !!float 2e4
+  save_img: false
+
+  metrics:
+    psnr: # metric name, can be arbitrary
+      type: calculate_psnr
+      crop_border: 0
+      test_y_channel: false
+    ssim:
+      type: calculate_ssim
+      crop_border: 0
+      test_y_channel: false
+
+# logging settings
+logger:
+  print_freq: 100
+  save_checkpoint_freq: !!float 2e4
+  use_tb_logger: true
+  wandb:
+    project: ~
+    resume_id: ~
+
+# dist training settings
+dist_params:
+  backend: nccl
+  port: 29520

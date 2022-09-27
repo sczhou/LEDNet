@@ -121,3 +121,11 @@ venv.bak/
 .mypy_cache/
 
 # project
+basicsr.egg-info
+experiments
+results*
+*old*
+tb_logger
+run.sh
+inference.sh
+tb.sh
