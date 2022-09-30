@@ -12,7 +12,9 @@ S-Lab, Nanyang Technological University
 
 ### Updates
 
-- **2022.09.27**:  The code and pre-trained models are released. :hugs:
+- **2022.09.30**:  Upload LOLBlur dataset to [BaiduPan](https://pan.baidu.com/s/1CPphxCKQJa_iJAGD6YACuA) (key: dz6u) for quick download in China :cn:
+- **2022.09.27**:  Upload LOLBlur dataset to [Google Drive](https://drive.google.com/drive/folders/11HcsiHNvM7JUlbuHIniREdQ2peDUhtwX?usp=sharing).
+- **2022.09.27**:  The code and pre-trained models are released :hugs:
 - **2022.07.04**:  This repo is created.
 
 ### TODO
@@ -24,11 +26,11 @@ S-Lab, Nanyang Technological University
 ---
 
 ### LOL-Blur Dataset
-(All data is hosted on Google Drive)
+(The datasets are hosted on both Google Drive and BaiduPan)
 | Dataset | Link | Number | Description|
 | :----- | :--: | :----: | :---- | 
-| LOL-Blur | [Google Drive](https://drive.google.com/drive/folders/11HcsiHNvM7JUlbuHIniREdQ2peDUhtwX?usp=sharing) | 12,000 | A total of 170 videos for training and 30 videos for testing, each of which has 60 frames, amounting to 12,000 paired data. (Note that the first and last 30 frames of each video are NOT consecutive, and their darknesses are simulated differently as well.)|
-| Real-LOL-Blur| [Google Drive](https://drive.google.com/drive/folders/1fXUA5SzXj46ISw9aUjSors1u6M9VlKAn?usp=sharing) | 1354 | 482 real-world night blurry images (from [RealBlur-J Dataset](http://cg.postech.ac.kr/research/realblur/)) + 872 real-world night blurry images acquired by Sony RX10 IV camera.|
+| LOL-Blur | [Google Drive](https://drive.google.com/drive/folders/11HcsiHNvM7JUlbuHIniREdQ2peDUhtwX?usp=sharing) / [BaiduPan (key: dz6u)](https://pan.baidu.com/s/1CPphxCKQJa_iJAGD6YACuA) | 12,000 | A total of 170 videos for training and 30 videos for testing, each of which has 60 frames, amounting to 12,000 paired data. (Note that the first and last 30 frames of each video are NOT consecutive, and their darknesses are simulated differently as well.)|
+| Real-LOL-Blur| [Google Drive](https://drive.google.com/drive/folders/1fXUA5SzXj46ISw9aUjSors1u6M9VlKAn?usp=sharing) / [BaiduPan (key: fh32)](https://pan.baidu.com/s/1sP87VGiof_NixZsA8dhalA) | 1354 | 482 real-world night blurry images (from [RealBlur-J Dataset](http://cg.postech.ac.kr/research/realblur/)) + 872 real-world night blurry images acquired by Sony RX10 IV camera.|
 
 <details close>
 <summary>[Unfold] for detailed description of each folder in LOL-Blur dataset:</summary>
@@ -75,7 +77,7 @@ python basicsr/setup.py develop
 ### Train the Model
 Before training, you need to:
 
-- Download the LOL-Blur Dataset from [[Google Drive](https://drive.google.com/drive/folders/11HcsiHNvM7JUlbuHIniREdQ2peDUhtwX?usp=sharing)].
+- Download the LOL-Blur Dataset from [Google Drive](https://drive.google.com/drive/folders/11HcsiHNvM7JUlbuHIniREdQ2peDUhtwX?usp=sharing) / [BaiduPan (key: dz6u)](https://pan.baidu.com/s/1CPphxCKQJa_iJAGD6YACuA).
 - Specify `dataroot_gt` and `dataroot_lq` in the corresponding option file.
 
 Training LEDNet:

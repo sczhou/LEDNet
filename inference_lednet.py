@@ -69,7 +69,7 @@ if __name__ == '__main__':
         # prepare data
         img_t = img2tensor(img / 255., bgr2rgb=True, float32=True)
 
-        # no [-1,1] normalization in lednet model (paper version) 
+        # without [-1,1] normalization in lednet model (paper version) 
         if not args.model == 'lednet':
             normalize(img_t, (0.5, 0.5, 0.5), (0.5, 0.5, 0.5), inplace=True)
         img_t = img_t.unsqueeze(0).to(device)
