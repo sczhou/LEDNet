@@ -51,7 +51,7 @@ if __name__ == '__main__':
     
     # ckpt_path = 'weights/lednet.pth'
     assert args.model in ['lednet', 'lednet_retrain', 'lednetgan'], ('model name should be [lednet] or [lednetgan]')
-    ckpt_path = load_file_from_url(url=pretrain_model_url['args.model'], 
+    ckpt_path = load_file_from_url(url=pretrain_model_url[args.model], 
                                     model_dir='./weights', progress=True, file_name=None)
     checkpoint = torch.load(ckpt_path)['params']
     net.load_state_dict(checkpoint)
