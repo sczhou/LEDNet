@@ -4,7 +4,7 @@
 
 ## LEDNet: Joint Low-light Enhancement and Deblurring in the Dark (ECCV 2022)
 
-[Paper](https://arxiv.org/abs/2202.03373) | [Project Page](https://shangchenzhou.com/projects/LEDNet/) | [Video](https://youtu.be/450dkE-fOMY)
+[Paper](https://arxiv.org/abs/2202.03373) | [Project Page](https://shangchenzhou.com/projects/LEDNet/) | [Video](https://youtu.be/450dkE-fOMY) | [Replicate Demo](https://replicate.com/sczhou/lednet)
 
 [Shangchen Zhou](https://shangchenzhou.com/), [Chongyi Li](https://li-chongyi.github.io/), [Chen Change Loy](https://www.mmlab-ntu.com/person/ccloy/) 
 
@@ -125,6 +125,16 @@ Run low-light generation:
 ```
 python scripts/generate_low_light_imgs.py --test_path 'IMG_ROOT' --result_path 'RESULT_ROOT' --model_path './weights/ce_zerodce.pth'
 ```
+
+### Inference with Cog
+To run containerized local inference with LEDNet using [Cog](https://github.com/replicate/cog), run the following commands in the project root:
+
+```
+cog run python basicsr/setup.py develop
+cog predict -i image=@'path/to/input_image.jpg'
+```
+
+You can view this demo running as an API [here on Replicate](https://replicate.com/sczhou/lednet).
 
 ### License
 

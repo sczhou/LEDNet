@@ -1,0 +1,43 @@
+# Configuration for Cog ⚙️
+# Reference: https://github.com/replicate/cog/blob/main/docs/yaml.md
+
+build:
+  # set to true if your model requires a GPU
+  gpu: true
+  
+  # python version in the form '3.8' or '3.8.12'
+  python_version: "3.8"
+
+  # opencv dependencies
+  system_packages:
+    - "ffmpeg"
+    - "libsm6"
+    - "libxext6"
+
+  python_packages:
+    - "addict==2.4.0"
+    - "future==0.18.2"
+    - "lmdb==1.4.0"
+    - "lpips==0.1.4"
+    - "numpy==1.23.5"
+    - "opencv-python==4.6.0.66"
+    - "Pillow==9.3.0"
+    - "pyiqa==0.1.5"
+    - "PyYAML==6.0"
+    - "requests==2.28.1"
+    - "scikit-image==0.19.3"
+    - "scipy==1.9.3"
+    - "tb-nightly==2.12.0a20221213"
+    - "torch==1.13.0"
+    - "torchvision==0.14.0"
+    - "tqdm==4.64.1"
+    - "yapf==0.32.0"
+
+  run:
+     # download models
+     - "mkdir -p weights"
+     - "curl -o weights/lednet.pth -L https://github.com/sczhou/LEDNet/releases/download/v0.1.0/lednet.pth"
+     - "curl -o weights/lednet_retrain_500000.pth -L https://github.com/sczhou/LEDNet/releases/download/v0.1.0/lednet_retrain_500000.pth"
+
+# predict.py defines how predictions are run on your model
+predict: "predict.py:LEDNetPredictor"
