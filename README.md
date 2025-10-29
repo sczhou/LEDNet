@@ -4,7 +4,7 @@
 
 ## LEDNet: Joint Low-light Enhancement and Deblurring in the Dark (ECCV 2022)
 
-[Paper](https://arxiv.org/abs/2202.03373) | [Project Page](https://shangchenzhou.com/projects/LEDNet/) | [Video](https://youtu.be/450dkE-fOMY) | [Replicate Demo](https://replicate.com/sczhou/lednet)
+[Paper](https://arxiv.org/abs/2202.03373) | [Project Page](https://shangchenzhou.com/projects/LEDNet/) | [Video](https://youtu.be/450dkE-fOMY) | [Replicate Demo](https://replicate.com/sczhou/lednet) | [TensorRT & ONNX](https://github.com/koamd/LEDNet_TensorRT)
 
 [Shangchen Zhou](https://shangchenzhou.com/), [Chongyi Li](https://li-chongyi.github.io/), [Chen Change Loy](https://www.mmlab-ntu.com/person/ccloy/) 
 
@@ -12,6 +12,7 @@ S-Lab, Nanyang Technological University
 
 ### Updates
 
+- **2025.10.29**:  [LEDNet_TensorRT](https://github.com/koamd/LEDNet_TensorRT) provides both **ONNXRuntime** and **TensorRT** implementations. 🚀 Many thanks to [@koamd](https://github.com/koamd)!
 - **2022.09.30**:  Upload LOLBlur dataset to [BaiduPan](https://pan.baidu.com/s/1CPphxCKQJa_iJAGD6YACuA) (key: dz6u) for quick download in China :cn:
 - **2022.09.27**:  Upload LOLBlur dataset to [Google Drive](https://drive.google.com/drive/folders/11HcsiHNvM7JUlbuHIniREdQ2peDUhtwX?usp=sharing).
 - **2022.09.27**:  The code and pre-trained models are released :hugs:
